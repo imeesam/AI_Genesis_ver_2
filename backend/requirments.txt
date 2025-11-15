@@ -1,19 +1,21 @@
+# FastAPI web framework
 fastapi
 uvicorn
-python-dotenv
+
+# Environment and OS
+python-dotenv        # optional if you use .env locally
+
+# PDF and file handling
+PyMuPDF              # provides 'fitz'
 requests
-tqdm
-numpy
-PyMuPDF
+beautifulsoup4
 
-# RAG / Vector Store
-langchain
+# YouTube transcript API
+youtube-transcript-api
+
 langchain-huggingface
-langchain-community
-faiss-cpu
+qdrant-client
 
-# LLM
+# LLMs
 groq
 langgraph
-os
-fitz
