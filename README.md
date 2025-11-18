@@ -1,12 +1,12 @@
 # 🤖 Agentic AI Study & Research Copilot
 
-![Banner Image](path/to/your/banner_image.png)
+![Banner Image](frontend/banner.PNG)
 
-Intelligent AI assistant designed for **study and research**, capable of ingesting multi-modal content and providing context-aware answers through a Retrieval-Augmented Generation (RAG) pipeline.
+Intelligent AI assistant for **study and research**, capable of ingesting multi-modal content and providing context-aware answers via a **Retrieval-Augmented Generation (RAG) pipeline**.
 
 ---
 
-## **1. User Input / Content Submission**
+## 1️⃣ User Input / Content Submission
 
 Users provide content in **three main formats**:
 
@@ -16,11 +16,11 @@ Users provide content in **three main formats**:
 
 Optional: direct text input for quick ingestion.  
 
-**Purpose:** Capture all sources of study or research material to build a knowledge base.
+**Purpose:** Capture all sources of study or research material to build a comprehensive knowledge base.
 
 ---
 
-## **2. Ingestion & Preprocessing**
+## 2️⃣ Ingestion & Preprocessing
 
 * **PDF Ingestor:** Extracts text via PyMuPDF → chunks → embeddings.  
 * **Web Ingestor:** Scrapes webpages → cleans → chunks → embeddings.  
@@ -29,21 +29,21 @@ Optional: direct text input for quick ingestion.
 **Text Chunking:** Enables semantic search for large documents.  
 **Embeddings:** Converts chunks into numerical vectors for retrieval.
 
-**Purpose:** Standardize diverse data for semantic search by AI.
+**Purpose:** Standardize diverse data for effective semantic search by AI.
 
 ---
 
-## **3. Vector Store / Knowledge Base**
+## 3️⃣ Vector Store / Knowledge Base
 
 * Stores all content embeddings.  
 * Enables **semantic search**, retrieving relevant chunks even if query words don’t match exactly.  
 * Supports updates, clearing, and re-ingestion of content.
 
-**Purpose:** Efficient retrieval for answering queries accurately.
+**Purpose:** Efficient retrieval for accurate and context-aware answers.
 
 ---
 
-## **4. Query Handling & Agent Processing**
+## 4️⃣ Query Handling & Agent Processing
 
 * **User Query:** Submitted via Streamlit frontend.  
 * **RAG Pipeline:**
@@ -58,32 +58,33 @@ Optional: direct text input for quick ingestion.
 
 ---
 
-## **5. Response / Frontend Interaction**
+## 5️⃣ Response / Frontend Interaction
 
 * Answers displayed in **Streamlit chat interface**:
   * Live typing animation.  
   * Chat history maintained.  
-* Users can clear sources or update ingestions anytime.  
+
+![Chat Interface](frontend/Chatinterface.jpeg)
 
 **Purpose:** Natural and interactive AI-human experience leveraging stored knowledge.
 
 ---
 
-## **6. Optional Management & Deployment**
+## 6️⃣ Optional Management & Deployment
 
-* **Memory & Sessions:** Keeps long-term ingested content and session state.  
+* **Memory & Sessions:** Maintains long-term ingested content and session state.  
 * **Deployment:**  
-  * FastAPI backend + Streamlit frontend.  
-  * Vector store can be cloud-hosted (Supabase / FAISS).  
-  * Fully scalable and modular architecture.
+  * FastAPI backend + Streamlit frontend  
+  * Vector store can be cloud-hosted (Supabase / FAISS)  
+  * Fully scalable and modular architecture
 
 **Purpose:** Ready for multi-user, scalable research deployment.
 
 ---
 
-## **7. End-to-End Flow Overview**
+## 7️⃣ End-to-End Flow Overview
 
-![Mermaid Flow Diagram](path/to/your/mermaid_flow_image.png)
+![Mermaid Flow Diagram](frontend/FLOW.png)
 
 ```mermaid
 graph TD
@@ -95,3 +96,5 @@ D --> F
 F --> G[LLM / Agent Generates Contextual Answer]
 G --> H[Frontend Chat Interface (Streamlit)]
 H --> I[User Sees Answer]
+```
+PPT link : ![Click here](https://gamma.app/docs/Agentic-AI-Study-Research-Copilot-k2tsgwk9h27x8fq)
