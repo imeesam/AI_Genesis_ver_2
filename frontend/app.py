@@ -41,7 +41,8 @@ with st.sidebar:
     if pdf_file:
         files = {"file": (pdf_file.name, pdf_file.getvalue(), "application/pdf")}
         try:
-            res = requests.post(f"{FASTAPI_URL}/upload_pdf", files=files, timeout=10)
+            # Fixed backend endpoint for PDF upload
+            res = requests.post(f"{FASTAPI_URL}/ingest/pdf", files=files, timeout=10)
             res.raise_for_status()
             st.success("PDF uploaded & processed successfully!")
             st.session_state.pdf_uploaded = True
@@ -102,7 +103,6 @@ display_chat()
 # Chat Input (Pinned at Bottom)
 # --------------------------
 if user_input := st.chat_input("Type your message here..."):
-    # Only process new input
     if user_input != st.session_state.last_input_sent:
         st.session_state.last_input_sent = user_input
 
@@ -110,33 +110,27 @@ if user_input := st.chat_input("Type your message here..."):
         st.session_state.chat_history.append(("user", user_input))
         display_chat()  # Show user message immediately
 
-        # Determine if input is a URL for ingestion
+        # Check if input is a URL
         is_link = user_input.startswith("http://") or user_input.startswith("https://")
 
         with st.spinner("Thinking..."):
             try:
                 if is_link:
-                    # Send to ingestion endpoint
+                    # Fixed backend endpoint for URL ingestion
                     res = requests.post(
-                        f"{FASTAPI_URL}/chat_or_ingest",
-                        data={"message": user_input},
+                        f"{FASTAPI_URL}/ingest/web",
+                        json={"url": user_input},
                         timeout=60
                     )
                     res.raise_for_status()
                     data = res.json()
 
-                    if data["type"] == "ingestion":
-                        answer = "\n".join([
-                            f"{r.get('message','Ingested')} ({r.get('ingested_chunks',0)} chunks)"
-                            for r in data["results"]
-                        ])
-                    else:
-                        answer = data.get("answer", "❌ No answer returned.")
+                    answer = f"✅ Web content ingested: {data.get('source', user_input)}"
                 else:
-                    # Normal chat query
-                    res = requests.get(
-                        f"{FASTAPI_URL}/chat",
-                        params={"q": user_input},
+                    # Normal chat query (already correct)
+                    res = requests.post(
+                        f"{FASTAPI_URL}/query",
+                        json={"query": user_input},
                         timeout=30
                     )
                     res.raise_for_status()
@@ -151,7 +145,7 @@ if user_input := st.chat_input("Type your message here..."):
         st.session_state.chat_history.append(("assistant", ""))
         bot_index = len(st.session_state.chat_history) - 1
 
-        # Typing animation in placeholder
+        # Typing animation
         built = ""
         placeholder = st.empty()
         for ch in answer:
@@ -167,5 +161,5 @@ if user_input := st.chat_input("Type your message here..."):
                 unsafe_allow_html=True,
             )
 
-        # Replace placeholder with final answer in chat history
+        # Save final answer to chat history
         st.session_state.chat_history[bot_index] = ("assistant", answer)
