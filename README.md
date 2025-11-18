@@ -87,3 +87,7 @@ Optional: direct text input for quick ingestion.
 <img src="frontend/FLOW.png" alt="Mermaid Flow Diagram" width="600"/>
 
 PPT link: [Click here](https://gamma.app/docs/Agentic-AI-Study-Research-Copilot-k2tsgwk9h27x8fq)
+
+---
+
+© All Rights Reserved 2025 @mees.ai
