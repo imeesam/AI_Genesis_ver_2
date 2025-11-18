@@ -1,6 +1,6 @@
 # 🤖 Agentic AI Study & Research Copilot
 
-![Banner Image](frontend/banner.PNG)
+<img src="frontend/banner.PNG" alt="Banner Image" width="700"/>
 
 Intelligent AI assistant for **study and research**, capable of ingesting multi-modal content and providing context-aware answers via a **Retrieval-Augmented Generation (RAG) pipeline**.
 
@@ -64,7 +64,7 @@ Optional: direct text input for quick ingestion.
   * Live typing animation.  
   * Chat history maintained.  
 
-![Chat Interface](frontend/Chatinterface.jpeg)
+<img src="frontend/Chatinterface.jpeg" alt="Chat Interface" width="500"/>
 
 **Purpose:** Natural and interactive AI-human experience leveraging stored knowledge.
 
@@ -84,17 +84,6 @@ Optional: direct text input for quick ingestion.
 
 ## 7️⃣ End-to-End Flow Overview
 
-![Mermaid Flow Diagram](frontend/FLOW.png)
+<img src="frontend/FLOW.png" alt="Mermaid Flow Diagram" width="600"/>
 
-```mermaid
-graph TD
-A[User Uploads Content (PDF / Web / YouTube / Text)] --> B[Ingestor Module]
-B --> C[Text Chunking & Embeddings]
-C --> D[Vector Store / Knowledge Base]
-E[User Query] --> F[RAG Pipeline]
-D --> F
-F --> G[LLM / Agent Generates Contextual Answer]
-G --> H[Frontend Chat Interface (Streamlit)]
-H --> I[User Sees Answer]
-```
-PPT link : ![Click here](https://gamma.app/docs/Agentic-AI-Study-Research-Copilot-k2tsgwk9h27x8fq)
+PPT link: [Click here](https://gamma.app/docs/Agentic-AI-Study-Research-Copilot-k2tsgwk9h27x8fq)
