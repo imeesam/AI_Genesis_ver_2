@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import time
 
-FASTAPI_URL = "https://aigenesisver2-production.up.railway.app/"
+FASTAPI_URL = "https://aigenesisver2-production.up.railway.app"
 
 # --------------------------
 # Page Config
