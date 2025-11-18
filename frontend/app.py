@@ -42,7 +42,7 @@ with st.sidebar:
         files = {"file": (pdf_file.name, pdf_file.getvalue(), "application/pdf")}
         try:
             # Fixed backend endpoint for PDF upload
-            res = requests.post(f"{FASTAPI_URL}/ingest/pdf", files=files, timeout=10)
+            res = requests.post(f"{FASTAPI_URL}/rag/ingest/pdf", files=files, timeout=10)
             res.raise_for_status()
             st.success("PDF uploaded & processed successfully!")
             st.session_state.pdf_uploaded = True
@@ -118,7 +118,7 @@ if user_input := st.chat_input("Type your message here..."):
                 if is_link:
                     # Fixed backend endpoint for URL ingestion
                     res = requests.post(
-                        f"{FASTAPI_URL}/ingest/web",
+                        f"{FASTAPI_URL}/rag/ingest/web",
                         json={"url": user_input},
                         timeout=60
                     )
@@ -127,9 +127,9 @@ if user_input := st.chat_input("Type your message here..."):
 
                     answer = f"✅ Web content ingested: {data.get('source', user_input)}"
                 else:
-                    # Normal chat query (already correct)
+                    # Normal chat query
                     res = requests.post(
-                        f"{FASTAPI_URL}/query",
+                        f"{FASTAPI_URL}/rag/query",
                         json={"query": user_input},
                         timeout=30
                     )
